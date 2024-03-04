@@ -1,0 +1,10 @@
+{
+    "@context": {
+        "time": "https://hbrs-sesame.github.io/metamodels/time#",
+        "Event": { "@id": "time:Event" },
+        "of-event": { "@id": "time:of-event", "@type": "@id" },
+
+        "BeforeEventConstraint": { "@id": "time:BeforeEventConstraint" },
+        "AfterEventConstraint": { "@id": "time:AfterEventConstraint" }
+    }
+}
