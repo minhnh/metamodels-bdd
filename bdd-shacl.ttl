@@ -1,0 +1,73 @@
+
+# SPDX-License-Identifier: GPL-3.0-or-later
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix bdd: <https://hbrs-sesame.github.io/metamodels/acceptance-criteria/bdd#> .
+
+#######################################
+# Basic shape for Scenario
+#######################################
+# A bdd:Scenario has exactly 1 bdd:Given, bdd:When, and bdd:Then
+bdd:ScenarioShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:Scenario ;
+  sh:property [
+    sh:path bdd:given ;
+    sh:class bdd:Given ;
+    sh:nodeKind sh:IRI ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path bdd:when ;
+    sh:class bdd:When ;
+    sh:nodeKind sh:IRI ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path bdd:then ;
+    sh:class bdd:Then ;
+    sh:nodeKind sh:IRI ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] .
+
+# bdd:Given, bdd:When, and bdd:Then must be associtated with exactly 1 bdd:Scenario
+bdd:GivenShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:Given ;
+  sh:property [
+    sh:path [ sh:inversePath bdd:given ] ;
+    sh:class bdd:Scenario ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] .
+bdd:WhenShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:When ;
+  sh:property [
+    sh:path [ sh:inversePath bdd:when ] ;
+    sh:class bdd:Scenario ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] .
+bdd:ThenShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:Then ;
+  sh:property [
+    sh:path [ sh:inversePath bdd:then ] ;
+    sh:class bdd:Scenario ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] .
+
+# bdd:of-scenario must refer to a bdd:Scenario
+bdd:OfScenarioShape
+  a sh:PropertyShape ;
+  sh:description ":of-scenario must link to :Scenario" ;
+  sh:path bdd:of-scenario ;
+  sh:class bdd:Scenario ;
+  sh:nodeKind sh:IRI ;
+  sh:minCount 1 .
+
+

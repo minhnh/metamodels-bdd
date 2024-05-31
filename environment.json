@@ -1,0 +1,18 @@
+{
+    "@context": {
+        "env": "https://hbrs-sesame.github.io/metamodels/environment#",
+
+        "Object": { "@id": "env:Object" },
+        "of-object": { "@id": "env:of-object", "@type": "@id" },
+        "has-object": { "@id": "env:has-object", "@type": "@id" },
+
+        "Workspace": { "@id": "env:Workspace" },
+        "of-workspace": { "@id": "env:of-workspace", "@type": "@id" },
+        "has-workspace": { "@id": "env:has-workspace", "@type": "@id" },
+
+        "WorkspaceHasObject": { "@id": "env:WorkspaceHasObject" },
+        "WorkspaceHasWorkspace": { "@id": "env:WorkspaceHasWorkspace" },
+
+        "RigidObject": { "@id": "env:RigidObject" }
+    }
+}

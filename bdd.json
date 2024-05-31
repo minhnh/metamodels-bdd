@@ -20,7 +20,7 @@
         "ScenarioVariable": { "@id": "bdd:ScenarioVariable" },
         "of-variable": { "@id": "bdd:of-variable", "@type": "@id" },
 
-        "FluentTimeConstraint": { "@id": "bdd:FluentTimeConstraint" },
+        "TimeConstraint": { "@id": "bdd:TimeConstraint" },
         "of-constraint": { "@id": "bdd:of-constraint", "@type": "@id" },
 
         "Fluent": { "@id": "bdd:Fluent" },
