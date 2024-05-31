@@ -1,7 +1,8 @@
-
 # SPDX-License-Identifier: GPL-3.0-or-later
+# Author: Minh Nguyen (minh@mail.minhnh.com)
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix bdd: <https://hbrs-sesame.github.io/metamodels/acceptance-criteria/bdd#> .
+@prefix time: <https://hbrs-sesame.github.io/metamodels/time#> .
 
 #######################################
 # Basic shape for Scenario
@@ -32,6 +33,16 @@ bdd:ScenarioShape
     sh:maxCount 1 ;
   ] .
 
+# bdd:of-scenario must refer to a bdd:Scenario
+bdd:OfScenarioShape
+  a sh:PropertyShape ;
+  sh:description ":of-scenario must link to :Scenario" ;
+  sh:path bdd:of-scenario ;
+  sh:class bdd:Scenario ;
+  sh:nodeKind sh:IRI ;
+  sh:minCount 1 ;
+  sh:maxCount 1 .
+
 # bdd:Given, bdd:When, and bdd:Then must be associtated with exactly 1 bdd:Scenario
 bdd:GivenShape
   a sh:NodeShape ;
@@ -61,13 +72,50 @@ bdd:ThenShape
     sh:maxCount 1 ;
   ] .
 
-# bdd:of-scenario must refer to a bdd:Scenario
-bdd:OfScenarioShape
-  a sh:PropertyShape ;
-  sh:description ":of-scenario must link to :Scenario" ;
-  sh:path bdd:of-scenario ;
-  sh:class bdd:Scenario ;
-  sh:nodeKind sh:IRI ;
-  sh:minCount 1 .
+#######################################
+# FluentClause shape
+#######################################
+bdd:FluentClauseShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:FluentClause ;
+  sh:property [
+    sh:path bdd:clause-of ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:or (
+      [ sh:class bdd:Given ; ]
+      [ sh:class bdd:When; ]
+      [ sh:class bdd:Then; ]
+    )
+  ] ;
+  sh:property [
+    sh:path bdd:holds ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:class bdd:Fluent ;
+  ] ;
+  sh:property [
+    sh:path bdd:holds-at ;
+    sh:class time:TimeConstraint ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] .
 
-
+#######################################
+# ScenarioTemplate shape
+#######################################
+bdd:ScenarioTemplateShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:ScenarioTemplate ;
+  sh:property bdd:OfScenarioShape ;
+  sh:property [
+    sh:path bdd:has-scene ;
+    sh:class bdd:Scene ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path bdd:has-clause;
+    sh:class bdd:FluentClause ;
+    sh:minCount 1 ;
+  ] .
