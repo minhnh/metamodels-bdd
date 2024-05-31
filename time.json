@@ -2,8 +2,7 @@
     "@context": {
         "time": "https://hbrs-sesame.github.io/metamodels/time#",
         "Event": { "@id": "time:Event" },
-        "on-event": { "@id": "time:on-event", "@type": "@id" },
-        "of-event": { "@id": "time:of-event", "@type": "@id" },
+        "ref-event": { "@id": "time:ref-event", "@type": "@id" },
 
         "TimeConstraint": { "@id": "time:TimeConstraint" },
         "of-constraint": { "@id": "time:of-constraint", "@type": "@id" },
