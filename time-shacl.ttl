@@ -1,0 +1,34 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Author: Minh Nguyen (minh@mail.minhnh.com)
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix time: <https://hbrs-sesame.github.io/metamodels/time#> .
+
+time:OfConstraintShape
+  a sh:PropertyShape ;
+  sh:description ":of-constraint must link to :TimeConstraint" ;
+  sh:path time:of-constraint ;
+  sh:class time:TimeConstraint ;
+  sh:nodeKind sh:IRI ;
+  sh:minCount 1 ;
+  sh:maxCount 1 .
+
+time:OnEventShape
+  a sh:PropertyShape ;
+  sh:description ":on-event must link to :Event" ;
+  sh:path time:on-event ;
+  sh:class time:Event ;
+  sh:nodeKind sh:IRI ;
+  sh:minCount 1 ;
+  sh:maxCount 1 .
+
+time:AfterEventConstraintShape
+  a sh:NodeShape ;
+  sh:targetClass time:AfterEventConstraint ;
+  sh:property time:OfConstraintShape ;
+  sh:property time:OnEventShape .
+
+time:BeforeEventConstraintShape
+  a sh:NodeShape ;
+  sh:targetClass time:BeforeEventConstraint ;
+  sh:property time:OfConstraintShape ;
+  sh:property time:OnEventShape .
