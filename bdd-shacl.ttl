@@ -189,7 +189,12 @@ bdd:TaskVariationShape
 bdd:ScenarioVariantShape
   a sh:NodeShape ;
   sh:targetClass bdd:ScenarioVariant ;
-  sh:property bdd:OfScenarioShape ;
+  sh:property [
+    sh:path bdd:of-template ;
+    sh:class bdd:ScenarioTemplate ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
   sh:property [
     sh:path bdd:has-scene ;
     sh:or (
