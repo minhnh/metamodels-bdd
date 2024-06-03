@@ -3,10 +3,6 @@
         "task": "https://secorolab.github.io/metamodels/task#",
 
         "Task": { "@id": "task:Task" },
-        "of-task": { "@id": "task:of-task", "@type": "@id" },
-
-        "TaskVariation": { "@id": "task:TaskVariation" },
-        "has-variation": { "@id": "task:has-variation", "@type": "@id" },
-        "can-be": { "@id": "task:can-be", "@type": "@id" }
+        "of-task": { "@id": "task:of-task", "@type": "@id" }
     }
 }

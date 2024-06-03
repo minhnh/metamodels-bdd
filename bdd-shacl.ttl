@@ -5,6 +5,7 @@
 @prefix time: <https://secorolab.github.io/metamodels/time#> .
 @prefix env: <https://secorolab.github.io/metamodels/environment#> .
 @prefix agn: <https://secorolab.github.io/metamodels/agent#> .
+@prefix task: <https://secorolab.github.io/metamodels/task#> .
 
 #######################################
 # Basic shape for Scenario
@@ -16,21 +17,18 @@ bdd:ScenarioShape
   sh:property [
     sh:path bdd:given ;
     sh:class bdd:Given ;
-    sh:nodeKind sh:IRI ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] ;
   sh:property [
     sh:path bdd:when ;
     sh:class bdd:When ;
-    sh:nodeKind sh:IRI ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] ;
   sh:property [
     sh:path bdd:then ;
     sh:class bdd:Then ;
-    sh:nodeKind sh:IRI ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] .
@@ -41,7 +39,6 @@ bdd:OfScenarioShape
   sh:description ":of-scenario must link to :Scenario" ;
   sh:path bdd:of-scenario ;
   sh:class bdd:Scenario ;
-  sh:nodeKind sh:IRI ;
   sh:minCount 1 ;
   sh:maxCount 1 .
 
@@ -132,7 +129,6 @@ bdd:OfSceneShape
   sh:description ":of-scene must link to :Scene" ;
   sh:path bdd:of-scene ;
   sh:class bdd:Scene ;
-  sh:nodeKind sh:IRI ;
   sh:minCount 1 ;
   sh:maxCount 1 .
 
@@ -163,5 +159,55 @@ bdd:SceneHasAgentsShape
   sh:property [
     sh:path agn:has-agent;
     sh:class agn:Agent ;
+    sh:minCount 1 ;
+  ] .
+
+#######################################
+# ScenarioVariant and UserStory shape
+#######################################
+bdd:TaskVariationShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:TaskVariation ;
+  sh:property [
+    sh:path task:of-task ;
+    sh:class task:Task ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path bdd:of-variable ;
+    sh:class bdd:ScenarioVariable ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path bdd:can-be ;
+    sh:nodeKind sh:IRI ;
+    sh:minCount 1 ;
+  ] .
+
+bdd:ScenarioVariantShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:ScenarioVariant ;
+  sh:property bdd:OfScenarioShape ;
+  sh:property [
+    sh:path bdd:has-scene ;
+    sh:or (
+      [ sh:class bdd:SceneHasObjects ; ]
+      [ sh:class bdd:SceneHasWorkspaces ; ]
+      [ sh:class bdd:SceneHasAgents ; ]
+    )
+  ] ;
+  sh:property [
+    sh:path bdd:has-variation ;
+    sh:class bdd:TaskVariation ;
+  ] .
+
+bdd:UserStoryShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:UserStory ;
+  sh:property [
+    sh:path bdd:has-criteria ;
+    sh:class bdd:ScenarioVariant ;
     sh:minCount 1 ;
   ] .

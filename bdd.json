@@ -20,6 +20,10 @@
         "ScenarioVariable": { "@id": "bdd:ScenarioVariable" },
         "of-variable": { "@id": "bdd:of-variable", "@type": "@id" },
 
+        "TaskVariation": { "@id": "bdd:TaskVariation" },
+        "has-variation": { "@id": "bdd:has-variation", "@type": "@id" },
+        "can-be": { "@id": "bdd:can-be", "@type": "@id" },
+
         "Fluent": { "@id": "bdd:Fluent" },
         "predicate": { "@id": "bdd:predicate", "@type": "@id" },
         "of-fluent": { "@id": "bdd:of-fluent", "@type": "@id" },
