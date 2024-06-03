@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Author: Minh Nguyen (minh@mail.minhnh.com)
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix time: <https://hbrs-sesame.github.io/metamodels/time#> .
+@prefix time: <https://secorolab.github.io/metamodels/time#> .
 
 time:OfConstraintShape
   a sh:PropertyShape ;

@@ -1,0 +1,9 @@
+{
+    "@context": {
+        "agn": "https://secorolab.github.io/metamodels/agent#",
+
+        "Agent": { "@id": "agn:Agent" },
+        "of-agent": { "@id": "agn:of-agent", "@type": "@id" },
+        "has-agent": { "@id": "agn:has-agent", "@type": "@id" }
+    }
+}

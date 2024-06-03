@@ -1,6 +1,6 @@
 {
     "@context": {
-        "task": "https://hbrs-sesame.github.io/metamodels/task#",
+        "task": "https://secorolab.github.io/metamodels/task#",
 
         "Task": { "@id": "task:Task" },
         "of-task": { "@id": "task:of-task", "@type": "@id" },

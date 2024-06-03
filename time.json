@@ -1,6 +1,6 @@
 {
     "@context": {
-        "time": "https://hbrs-sesame.github.io/metamodels/time#",
+        "time": "https://secorolab.github.io/metamodels/time#",
         "Event": { "@id": "time:Event" },
         "ref-event": { "@id": "time:ref-event", "@type": "@id" },
 

@@ -1,6 +1,6 @@
 {
     "@context": {
-        "bhv": "https://hbrs-sesame.github.io/metamodels/behaviour#",
+        "bhv": "https://secorolab.github.io/metamodels/behaviour#",
         "Behaviour": { "@id": "bhv:Behaviour" },
         "of-behaviour": { "@id": "bhv:of-behaviour", "@type": "@id" }
     }

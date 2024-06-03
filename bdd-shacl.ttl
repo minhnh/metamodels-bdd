@@ -1,8 +1,10 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Author: Minh Nguyen (minh@mail.minhnh.com)
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix bdd: <https://hbrs-sesame.github.io/metamodels/acceptance-criteria/bdd#> .
-@prefix time: <https://hbrs-sesame.github.io/metamodels/time#> .
+@prefix bdd: <https://secorolab.github.io/metamodels/acceptance-criteria/bdd#> .
+@prefix time: <https://secorolab.github.io/metamodels/time#> .
+@prefix env: <https://secorolab.github.io/metamodels/environment#> .
+@prefix agn: <https://secorolab.github.io/metamodels/agent#> .
 
 #######################################
 # Basic shape for Scenario
@@ -53,6 +55,7 @@ bdd:GivenShape
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] .
+
 bdd:WhenShape
   a sh:NodeShape ;
   sh:targetClass bdd:When ;
@@ -62,6 +65,7 @@ bdd:WhenShape
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] .
+
 bdd:ThenShape
   a sh:NodeShape ;
   sh:targetClass bdd:Then ;
@@ -117,5 +121,47 @@ bdd:ScenarioTemplateShape
   sh:property [
     sh:path bdd:has-clause;
     sh:class bdd:FluentClause ;
+    sh:minCount 1 ;
+  ] .
+
+#######################################
+# Scene shape
+#######################################
+bdd:OfSceneShape
+  a sh:PropertyShape ;
+  sh:description ":of-scene must link to :Scene" ;
+  sh:path bdd:of-scene ;
+  sh:class bdd:Scene ;
+  sh:nodeKind sh:IRI ;
+  sh:minCount 1 ;
+  sh:maxCount 1 .
+
+bdd:SceneHasObjectsShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:SceneHasObjects ;
+  sh:property bdd:OfSceneShape ;
+  sh:property [
+    sh:path env:has-object ;
+    sh:class env:Object;
+    sh:minCount 1 ;
+  ] .
+
+bdd:SceneHasWorkspacesShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:SceneHasWorkspaces ;
+  sh:property bdd:OfSceneShape ;
+  sh:property [
+    sh:path env:has-workspace ;
+    sh:class env:Workspace ;
+    sh:minCount 1 ;
+  ] .
+
+bdd:SceneHasAgentsShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:SceneHasAgents ;
+  sh:property bdd:OfSceneShape ;
+  sh:property [
+    sh:path agn:has-agent;
+    sh:class agn:Agent ;
     sh:minCount 1 ;
   ] .
