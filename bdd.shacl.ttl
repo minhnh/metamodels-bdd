@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-License-Identifier:  MPL-2.0
 # Author: Minh Nguyen (minh@mail.minhnh.com)
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix bdd: <https://secorolab.github.io/metamodels/acceptance-criteria/bdd#> .
