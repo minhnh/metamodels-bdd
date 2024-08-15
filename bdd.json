@@ -45,12 +45,24 @@
         "ScenarioTemplate": { "@id": "bdd:ScenarioTemplate" },
         "of-template": { "@id": "bdd:of-template", "@type": "@id" },
 
+        "ScenarioVariant": { "@id": "bdd:ScenarioVariant" },
+        "of-variant": { "@id": "bdd:of-variant", "@type": "@id" },
+
         "Scene": { "@id": "bdd:Scene" },
         "of-scene": { "@id": "bdd:of-scene", "@type": "@id" },
         "has-scene": { "@id": "bdd:has-scene", "@type": "@id" },
 
         "SceneHasObjects": { "@id": "bdd:SceneHasObjects" },
         "SceneHasWorkspaces": { "@id": "bdd:SceneHasWorkspaces" },
-        "SceneHasAgents": { "@id": "bdd:SceneHasAgents" }
+        "SceneHasAgents": { "@id": "bdd:SceneHasAgents" },
+
+        "ScenarioExecution": { "@id": "bdd:ScenarioExecution" },
+        "SimulatedExecution": { "@id": "bdd:SimulatedExecution" },
+
+        "BehaviourImplementation": { "@id": "bdd:BehaviourImplementation" },
+        "has-behaviour-impl": { "@id": "bdd:has-behaviour-impl", "@type": "@id" },
+
+        "FluentImplementation": { "@id": "bdd:FluentImplementation" },
+        "has-fluent-impl": { "@id": "bdd:has-fluent-impl", "@type": "@id" }
     }
 }
