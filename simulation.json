@@ -6,7 +6,9 @@
         "sim": "https://secorolab.github.io/metamodels/simulation#",
 
         "UsdFile": { "@id": "usd:UsdFile" },
-        "ObjectModel": { "@id": "sim:ObjectModel" },
+
+        "AgentModel": { "@id": "sim:AgentModel" },
+
         "SystemResource": { "@id": "sim:SystemResource" },
         "IsaacResource": { "@id": "isaacsim:IsaacResource" },
 
@@ -14,7 +16,9 @@
         "path": { "@id": "sim:path", "@type": "xsd:string" },
 
         "SimulatedObject": { "@id": "sim:SimulatedObject" },
-        "object-model": { "@id": "sim:object-model", "@type": "@id"  },
+
+        "SimulatedAgent": { "@id": "sim:SimulatedAgent" },
+        "agent-model": { "@id": "sim:agent-model", "@type": "@id"  },
 
         "has-config": { "@id": "sim:has-config", "@type": "@json"  }
     }

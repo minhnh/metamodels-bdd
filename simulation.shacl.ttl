@@ -8,8 +8,8 @@ sim:SimulatedObjectShape
   a sh:NodeShape ;
   sh:targetClass sim:SimulatedObject ;
   sh:property [
-    sh:path sim:object-model ;
-    sh:class sim:ObjectModel;
+    sh:path env:object-model ;
+    sh:class env:ObjectModel;
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] ;
