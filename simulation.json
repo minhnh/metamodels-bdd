@@ -15,8 +15,6 @@
         "ResourceWithPath": { "@id": "sim:ResourceWithPath" },
         "path": { "@id": "sim:path", "@type": "xsd:string" },
 
-        "SimulatedObject": { "@id": "sim:SimulatedObject" },
-
         "SimulatedAgent": { "@id": "sim:SimulatedAgent" },
         "agent-model": { "@id": "sim:agent-model", "@type": "@id"  },
 

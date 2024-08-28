@@ -1,0 +1,23 @@
+# SPDX-License-Identifier:  MPL-2.0
+# Author: Minh Nguyen (minh@mail.minhnh.com)
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix env: <https://secorolab.github.io/metamodels/environment#> .
+
+# env:of-object must refer to a env:Object
+env:OfObjectShape
+  a sh:PropertyShape ;
+  sh:description ":of-object must link to :Object" ;
+  sh:path env:of-object ;
+  sh:class env:Object ;
+  sh:minCount 1 ;
+  sh:maxCount 1 .
+
+env:ModelledObjectShape
+  a sh:NodeShape ;
+  sh:targetClass env:ModelledObject ;
+  sh:property [
+    sh:path env:has-object-model ;
+    sh:class env:ObjectModel;
+    sh:minCount 1 ;
+  ] ;
+  sh:property env:OfObjectShape .

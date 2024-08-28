@@ -13,8 +13,9 @@
         "WorkspaceHasObject": { "@id": "env:WorkspaceHasObject" },
         "WorkspaceHasWorkspace": { "@id": "env:WorkspaceHasWorkspace" },
 
+        "ModelledObject": { "@id": "env:ModelledObject" },
         "ObjectModel": { "@id": "env:ObjectModel" },
-        "object-model": { "@id": "env:object-model", "@type": "@id"  },
+        "has-obj-model": { "@id": "env:has-object-model", "@type": "@id"  },
 
         "RigidObject": { "@id": "env:RigidObject" }
     }

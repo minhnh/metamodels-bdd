@@ -4,22 +4,6 @@
 @prefix sim: <https://secorolab.github.io/metamodels/simulation#> .
 @prefix env: <https://secorolab.github.io/metamodels/environment#> .
 
-sim:SimulatedObjectShape
-  a sh:NodeShape ;
-  sh:targetClass sim:SimulatedObject ;
-  sh:property [
-    sh:path env:object-model ;
-    sh:class env:ObjectModel;
-    sh:minCount 1 ;
-    sh:maxCount 1 ;
-  ] ;
-  sh:property [
-    sh:path env:of-object ;
-    sh:class env:Object;
-    sh:minCount 1 ;
-    sh:maxCount 1 ;
-  ] .
-
 sim:ResourceWithPathShape
   a sh:NodeShape ;
   sh:targetClass sim:ResourceWithPath ;
