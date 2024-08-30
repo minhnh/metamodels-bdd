@@ -4,6 +4,11 @@
 
         "Agent": { "@id": "agn:Agent" },
         "of-agent": { "@id": "agn:of-agent", "@type": "@id" },
-        "has-agent": { "@id": "agn:has-agent", "@type": "@id" }
+        "has-agent": { "@id": "agn:has-agent", "@type": "@id" },
+
+        "AgentModel": { "@id": "agn:AgentModel" },
+        "ModelledAgent": { "@id": "agn:ModelledAgent" },
+        "has-agn-model": { "@id": "agn:has-agent-model", "@type": "@id" }
+
     }
 }

@@ -2,7 +2,6 @@
 # Author: Minh Nguyen (minh@mail.minhnh.com)
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix sim: <https://secorolab.github.io/metamodels/simulation#> .
-@prefix env: <https://secorolab.github.io/metamodels/environment#> .
 
 sim:ResourceWithPathShape
   a sh:NodeShape ;

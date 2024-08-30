@@ -7,8 +7,6 @@
 
         "UsdFile": { "@id": "usd:UsdFile" },
 
-        "AgentModel": { "@id": "sim:AgentModel" },
-
         "SystemResource": { "@id": "sim:SystemResource" },
         "IsaacResource": { "@id": "isaacsim:IsaacResource" },
 
