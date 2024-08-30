@@ -23,7 +23,6 @@ time:RefEventShape
 time:AfterEventConstraintShape
   a sh:NodeShpe ;
   sh:targetClass time:AfterEventConstraint ;
-  sh:property time:OfConstraintShape ;
   sh:and(
     time:RefEventShape
     [
@@ -35,7 +34,6 @@ time:AfterEventConstraintShape
 time:BeforeEventConstraintShape
   a sh:NodeShape ;
   sh:targetClass time:BeforeEventConstraint ;
-  sh:property time:OfConstraintShape ;
   sh:and(
     time:RefEventShape
     [
