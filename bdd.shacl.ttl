@@ -1,6 +1,7 @@
 # SPDX-License-Identifier:  MPL-2.0
 # Author: Minh Nguyen (minh@mail.minhnh.com)
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix bdd: <https://secorolab.github.io/metamodels/acceptance-criteria/bdd#> .
 @prefix time: <https://secorolab.github.io/metamodels/time#> .
 @prefix env: <https://secorolab.github.io/metamodels/environment#> .
@@ -173,17 +174,55 @@ bdd:TaskVariationShape
     sh:class task:Task ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
-  ] ;
+  ] .
+
+bdd:CombinationShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:Combination ;
   sh:property [
-    sh:path bdd:of-variable ;
-    sh:class bdd:ScenarioVariable ;
+    sh:path bdd:repetition-allowed ;
+    sh:datatype xsd:boolean ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] ;
   sh:property [
-    sh:path bdd:can-be ;
-    sh:nodeKind sh:IRI ;
+    sh:path bdd:select ;
+    sh:datatype xsd:positiveInteger ;
     sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path bdd:from ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] .
+
+bdd:TableVariationShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:TableVariation ;
+  sh:property [
+    sh:path bdd:variable-list ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path bdd:rows ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] .
+
+bdd:CartesianProductVariationShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:CartesianProductVariation ;
+  sh:property [
+    sh:path bdd:variable-list ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path bdd:of-sets ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
   ] .
 
 bdd:ScenarioVariantShape
@@ -206,6 +245,8 @@ bdd:ScenarioVariantShape
   sh:property [
     sh:path bdd:has-variation ;
     sh:class bdd:TaskVariation ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
   ] .
 
 bdd:UserStoryShape
