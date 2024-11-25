@@ -186,7 +186,7 @@ bdd:CombinationShape
     sh:maxCount 1 ;
   ] ;
   sh:property [
-    sh:path bdd:select ;
+    sh:path bdd:length ;
     sh:datatype xsd:positiveInteger ;
     sh:minCount 1 ;
     sh:maxCount 1 ;

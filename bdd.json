@@ -32,8 +32,9 @@
         "of-sets": { "@id": "bdd:of-sets", "type": "@id", "@container": "@list" },
 
         "Combination": { "@id": "bdd:Combination" },
-        "repetition-allowed": { "@id": "bdd:repetition-allowed", "@type": "xsd:boolean" },
-        "select": { "@id": "bdd:select", "@type": "xsd:positiveInteger" },
+        "Permutation": { "@id": "bdd:Permutation" },
+        "repetition": { "@id": "bdd:repetition-allowed", "@type": "xsd:boolean" },
+        "length": { "@id": "bdd:length", "@type": "xsd:positiveInteger" },
         "from": { "@id": "bdd:from", "@container": "@list", "@type": "@id" },
 
         "Fluent": { "@id": "bdd:Fluent" },
