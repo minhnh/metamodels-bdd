@@ -19,7 +19,7 @@
         "WhenEvent": { "@id": "bdd:WhenEvent" },
 
         "ScenarioVariable": { "@id": "bdd:ScenarioVariable" },
-        "of-variable": { "@id": "bdd:of-variable", "@type": "@id" },
+        "variable": { "@id": "bdd:ref-variable", "@type": "@id" },
         "variable-list": { "@id": "bdd:variable-list", "@container": "@list", "@type": "@id" },
 
         "TaskVariation": { "@id": "bdd:TaskVariation" },
@@ -37,13 +37,19 @@
         "length": { "@id": "bdd:length", "@type": "xsd:positiveInteger" },
         "from": { "@id": "bdd:from", "@container": "@list", "@type": "@id" },
 
+        "ForAll": { "@id": "bdd:ForAll" },
+        "ThereExists": { "@id": "bdd:ThereExists" },
+        "in-set": { "@id": "bdd:in-set", "@container": "@list", "@type": "@id" },
+
         "Fluent": { "@id": "bdd:Fluent" },
         "predicate": { "@id": "bdd:predicate", "@type": "@id" },
         "of-fluent": { "@id": "bdd:of-fluent", "@type": "@id" },
 
         "FluentClause": { "@id": "bdd:FluentClause" },
         "clause-of": { "@id": "bdd:clause-of", "@type": "@id" },
-        "has-clause": { "@id": "bdd:has-clause", "@type": "@id" },
+        "has-clause": {
+            "@id": "bdd:has-clause", "@container": "@list", "@type": "@id"
+        },
         "holds": { "@id": "bdd:holds", "@type": "@id" },
         "holds-at": { "@id": "bdd:holds-at", "@type": "@id" },
 

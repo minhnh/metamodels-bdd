@@ -9,6 +9,44 @@
 @prefix task: <https://secorolab.github.io/metamodels/task#> .
 
 #######################################
+# Property shapes
+#######################################
+bdd:OfScenarioShape
+  a sh:PropertyShape ;
+  sh:description ":of-scenario must link to :Scenario" ;
+  sh:path bdd:of-scenario ;
+  sh:class bdd:Scenario ;
+  sh:minCount 1 ;
+  sh:maxCount 1 .
+
+bdd:OfSceneShape
+  a sh:PropertyShape ;
+  sh:description ":of-scene must link to :Scene" ;
+  sh:path bdd:of-scene ;
+  sh:class bdd:Scene ;
+  sh:minCount 1 ;
+  sh:maxCount 1 .
+
+bdd:RefVariableShape
+  a sh:PropertyShape ;
+  sh:description ":ref-variable must link to :ScenarioVariable" ;
+  sh:path bdd:ref-variable ;
+  sh:class bdd:ScenarioVariable ;
+  sh:minCount 1 ;
+  sh:maxCount 1 .
+
+bdd:HasClauseShape
+  a sh:PropertyShape ;
+  sh:path bdd:has-clause ;
+  sh:minCount 1 .
+
+bdd:InSetShape
+  a sh:PropertyShape ;
+  sh:path bdd:in-set ;
+  sh:minCount 1 ;
+  sh:maxCount 1 .
+
+#######################################
 # Basic shape for Scenario
 #######################################
 # A bdd:Scenario has exactly 1 bdd:Given, bdd:When, and bdd:Then
@@ -33,15 +71,6 @@ bdd:ScenarioShape
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] .
-
-# bdd:of-scenario must refer to a bdd:Scenario
-bdd:OfScenarioShape
-  a sh:PropertyShape ;
-  sh:description ":of-scenario must link to :Scenario" ;
-  sh:path bdd:of-scenario ;
-  sh:class bdd:Scenario ;
-  sh:minCount 1 ;
-  sh:maxCount 1 .
 
 # bdd:Given, bdd:When, and bdd:Then must be associtated with exactly 1 bdd:Scenario
 bdd:GivenShape
@@ -116,23 +145,11 @@ bdd:ScenarioTemplateShape
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] ;
-  sh:property [
-    sh:path bdd:has-clause;
-    sh:class bdd:FluentClause ;
-    sh:minCount 1 ;
-  ] .
+  sh:property bdd:HasClauseShape .
 
 #######################################
 # Scene shape
 #######################################
-bdd:OfSceneShape
-  a sh:PropertyShape ;
-  sh:description ":of-scene must link to :Scene" ;
-  sh:path bdd:of-scene ;
-  sh:class bdd:Scene ;
-  sh:minCount 1 ;
-  sh:maxCount 1 .
-
 bdd:SceneHasObjectsShape
   a sh:NodeShape ;
   sh:targetClass bdd:SceneHasObjects ;
@@ -162,6 +179,23 @@ bdd:SceneHasAgentsShape
     sh:class agn:Agent ;
     sh:minCount 1 ;
   ] .
+
+#######################################
+# Quantifier shape
+#######################################
+bdd:ForAllShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:ForAll ;
+  sh:property bdd:RefVariableShape ;
+  sh:property bdd:InSetShape ;
+  sh:property bdd:HasClauseShape .
+
+bdd:ThereExistsShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:ThereExists ;
+  sh:property bdd:RefVariableShape ;
+  sh:property bdd:InSetShape ;
+  sh:property bdd:HasClauseShape .
 
 #######################################
 # ScenarioVariant and UserStory shape
