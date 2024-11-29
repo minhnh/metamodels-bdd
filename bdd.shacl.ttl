@@ -38,7 +38,7 @@ bdd:RefVariableShape
 bdd:HasClauseShape
   a sh:PropertyShape ;
   sh:path bdd:has-clause ;
-  sh:minCount 1 .
+  sh:maxCount 1 .
 
 bdd:InSetShape
   a sh:PropertyShape ;
@@ -145,7 +145,13 @@ bdd:ScenarioTemplateShape
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] ;
-  sh:property bdd:HasClauseShape .
+  sh:and (
+    bdd:HasClauseShape
+    [
+      sh:path bdd:has-clause ;
+      sh:minCount 1 ;
+    ]
+  ) .
 
 #######################################
 # Scene shape
@@ -188,14 +194,41 @@ bdd:ForAllShape
   sh:targetClass bdd:ForAll ;
   sh:property bdd:RefVariableShape ;
   sh:property bdd:InSetShape ;
-  sh:property bdd:HasClauseShape .
+  sh:property [
+    sh:path bdd:clause-of ;
+    sh:class bdd:When ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:and (
+    bdd:HasClauseShape
+    [
+      sh:path bdd:has-clause ;
+      sh:minCount 1 ;
+    ]
+  ) .
 
 bdd:ThereExistsShape
   a sh:NodeShape ;
   sh:targetClass bdd:ThereExists ;
   sh:property bdd:RefVariableShape ;
   sh:property bdd:InSetShape ;
-  sh:property bdd:HasClauseShape .
+  sh:property [
+    sh:path bdd:clause-of ;
+    sh:or (
+      [ sh:class bdd:Given ; ]
+      [ sh:class bdd:Then; ]
+    ) ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:and (
+    bdd:HasClauseShape
+    [
+      sh:path bdd:has-clause ;
+      sh:minCount 1 ;
+    ]
+  ) .
 
 #######################################
 # ScenarioVariant and UserStory shape
@@ -268,6 +301,7 @@ bdd:ScenarioVariantShape
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] ;
+  sh:property bdd:HasClauseShape ;
   sh:property [
     sh:path bdd:has-scene ;
     sh:or (
