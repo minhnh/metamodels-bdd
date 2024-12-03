@@ -17,6 +17,7 @@
         "Then": { "@id": "bdd:Then" },
 
         "WhenEvent": { "@id": "bdd:WhenEvent" },
+        "WhenBehaviour": { "@id": "bdd:WhenBehaviour" },
 
         "ScenarioVariable": { "@id": "bdd:ScenarioVariable" },
         "variable": { "@id": "bdd:ref-variable", "@type": "@id" },

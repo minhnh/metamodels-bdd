@@ -2,6 +2,15 @@
     "@context": {
         "bhv": "https://secorolab.github.io/metamodels/behaviour#",
         "Behaviour": { "@id": "bhv:Behaviour" },
-        "of-behaviour": { "@id": "bhv:of-behaviour", "@type": "@id" }
+        "of-behaviour": { "@id": "bhv:of-behaviour", "@type": "@id" },
+
+        "Pick": { "@id": "bhv:Pick" },
+        "Place": { "@id": "bhv:Place" },
+        "target-obj": { "@id": "bhv:target-object", "@type": "@id" },
+        "target-ws": { "@id": "bhv:target-workspace", "@type": "@id" },
+
+        "PickPlace": { "@id": "bhv:PickPlace" },
+        "pick-ws": { "@id": "bhv:pick-workspace", "@type": "@id" },
+        "place-ws": { "@id": "bhv:place-workspace", "@type": "@id" }
     }
 }

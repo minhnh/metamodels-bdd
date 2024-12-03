@@ -3,6 +3,7 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix bdd: <https://secorolab.github.io/metamodels/acceptance-criteria/bdd#> .
+@prefix bhv: <https://secorolab.github.io/metamodels/behaviour#> .
 @prefix time: <https://secorolab.github.io/metamodels/time#> .
 @prefix env: <https://secorolab.github.io/metamodels/environment#> .
 @prefix agn: <https://secorolab.github.io/metamodels/agent#> .
@@ -24,6 +25,22 @@ bdd:OfSceneShape
   sh:description ":of-scene must link to :Scene" ;
   sh:path bdd:of-scene ;
   sh:class bdd:Scene ;
+  sh:minCount 1 ;
+  sh:maxCount 1 .
+
+task:OfTaskShape
+  a sh:PropertyShape ;
+  sh:description ":of-task must link to :Task" ;
+  sh:path task:of-task ;
+  sh:class task:Task ;
+  sh:minCount 1 ;
+  sh:maxCount 1 .
+
+bhv:OfBehaviourShape
+  a sh:PropertyShape ;
+  sh:description ":of-behaviour must link to :Behaviour" ;
+  sh:path bhv:of-behaviour ;
+  sh:class bhv:Behaviour ;
   sh:minCount 1 ;
   sh:maxCount 1 .
 
@@ -53,6 +70,8 @@ bdd:InSetShape
 bdd:ScenarioShape
   a sh:NodeShape ;
   sh:targetClass bdd:Scenario ;
+  sh:property task:OfTaskShape ;
+  sh:property bhv:OfBehaviourShape;
   sh:property [
     sh:path bdd:given ;
     sh:class bdd:Given ;
@@ -104,7 +123,7 @@ bdd:ThenShape
   ] .
 
 #######################################
-# FluentClause shape
+# Clauses shape
 #######################################
 bdd:FluentClauseShape
   a sh:NodeShape ;
@@ -128,6 +147,17 @@ bdd:FluentClauseShape
   sh:property [
     sh:path bdd:holds-at ;
     sh:class time:TimeConstraint ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] .
+
+bdd:WhenBehaviourShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:WhenBehaviour ;
+  sh:property bhv:OfBehaviourShape ;
+  sh:property [
+    sh:path bdd:clause-of ;
+    sh:class bdd:When ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] .
@@ -236,12 +266,7 @@ bdd:ThereExistsShape
 bdd:TaskVariationShape
   a sh:NodeShape ;
   sh:targetClass bdd:TaskVariation ;
-  sh:property [
-    sh:path task:of-task ;
-    sh:class task:Task ;
-    sh:minCount 1 ;
-    sh:maxCount 1 ;
-  ] .
+  sh:property task:OfTaskShape .
 
 bdd:CombinationShape
   a sh:NodeShape ;
