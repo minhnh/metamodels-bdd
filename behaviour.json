@@ -6,6 +6,7 @@
 
         "Pick": { "@id": "bhv:Pick" },
         "Place": { "@id": "bhv:Place" },
+        "target-agn": { "@id": "bhv:target-agent", "@type": "@id" },
         "target-obj": { "@id": "bhv:target-object", "@type": "@id" },
         "target-ws": { "@id": "bhv:target-workspace", "@type": "@id" },
 
