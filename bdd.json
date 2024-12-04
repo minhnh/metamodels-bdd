@@ -40,7 +40,7 @@
 
         "ForAll": { "@id": "bdd:ForAll" },
         "ThereExists": { "@id": "bdd:ThereExists" },
-        "in-set": { "@id": "bdd:in-set", "@container": "@list", "@type": "@id" },
+        "in-set": { "@id": "bdd:in-set", "@type": "@id" },
 
         "Fluent": { "@id": "bdd:Fluent" },
         "predicate": { "@id": "bdd:predicate", "@type": "@id" },
