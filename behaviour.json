@@ -8,10 +8,6 @@
         "Place": { "@id": "bhv:Place" },
         "target-agn": { "@id": "bhv:target-agent", "@type": "@id" },
         "target-obj": { "@id": "bhv:target-object", "@type": "@id" },
-        "target-ws": { "@id": "bhv:target-workspace", "@type": "@id" },
-
-        "PickPlace": { "@id": "bhv:PickPlace" },
-        "pick-ws": { "@id": "bhv:pick-workspace", "@type": "@id" },
-        "place-ws": { "@id": "bhv:place-workspace", "@type": "@id" }
+        "target-ws": { "@id": "bhv:target-workspace", "@type": "@id" }
     }
 }
