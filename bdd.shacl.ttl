@@ -139,12 +139,6 @@ bdd:FluentClauseShape
     )
   ] ;
   sh:property [
-    sh:path bdd:holds ;
-    sh:minCount 1 ;
-    sh:maxCount 1 ;
-    sh:class bdd:Fluent ;
-  ] ;
-  sh:property [
     sh:path bdd:holds-at ;
     sh:class time:TimeConstraint ;
     sh:minCount 1 ;

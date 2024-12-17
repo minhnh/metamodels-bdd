@@ -42,22 +42,18 @@
         "ThereExists": { "@id": "bdd:ThereExists" },
         "in-set": { "@id": "bdd:in-set", "@type": "@id" },
 
-        "Fluent": { "@id": "bdd:Fluent" },
-        "predicate": { "@id": "bdd:predicate", "@type": "@id" },
-        "of-fluent": { "@id": "bdd:of-fluent", "@type": "@id" },
-
         "FluentClause": { "@id": "bdd:FluentClause" },
         "clause-of": { "@id": "bdd:clause-of", "@type": "@id" },
         "has-clause": {
             "@id": "bdd:has-clause", "@container": "@list", "@type": "@id"
         },
-        "holds": { "@id": "bdd:holds", "@type": "@id" },
         "holds-at": { "@id": "bdd:holds-at", "@type": "@id" },
 
         "LocatedAtPredicate": { "@id": "bdd:LocatedAtPredicate" },
         "IsNearPredicate": { "@id": "bdd:IsNearPredicate" },
         "IsHeldPredicate": { "@id": "bdd:IsHeldPredicate" },
         "MoveSafelyPredicate": { "@id": "bdd:MoveSafelyPredicate" },
+        "SortedIntoPredicate": { "@id": "bdd:SortedIntoPredicate" },
 
         "ref-workspace": { "@id": "bdd:ref-workspace", "@type": "@id" },
         "ref-object": { "@id": "bdd:ref-object", "@type": "@id" },
