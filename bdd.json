@@ -57,6 +57,7 @@
         "LocatedAtPredicate": { "@id": "bdd:LocatedAtPredicate" },
         "IsNearPredicate": { "@id": "bdd:IsNearPredicate" },
         "IsHeldPredicate": { "@id": "bdd:IsHeldPredicate" },
+        "MoveSafelyPredicate": { "@id": "bdd:MoveSafelyPredicate" },
 
         "ref-workspace": { "@id": "bdd:ref-workspace", "@type": "@id" },
         "ref-object": { "@id": "bdd:ref-object", "@type": "@id" },

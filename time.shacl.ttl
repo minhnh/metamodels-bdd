@@ -12,32 +12,36 @@ time:OfConstraintShape
   sh:minCount 1 ;
   sh:maxCount 1 .
 
-time:RefEventShape
+time:BeforeEventShape
   a sh:PropertyShape ;
-  sh:description ":ref-event must link to :Event" ;
-  sh:path time:ref-event ;
+  sh:description ":before-event must link to exactly 1 :Event" ;
+  sh:path time:before-event ;
   sh:class time:Event ;
   sh:nodeKind sh:IRI ;
-  sh:minCount 1 .
+  sh:minCount 1 ;
+  sh:maxCount 1 .
 
-time:AfterEventConstraintShape
-  a sh:NodeShpe ;
-  sh:targetClass time:AfterEventConstraint ;
-  sh:and(
-    time:RefEventShape
-    [
-      sh:path time:ref-event ;
-      sh:maxCount 1 ;
-    ]
-  ) .
+time:AfterEventShape
+  a sh:PropertyShape ;
+  sh:description ":after-event must link to exactly 1 :Event" ;
+  sh:path time:after-event ;
+  sh:class time:Event ;
+  sh:nodeKind sh:IRI ;
+  sh:minCount 1 ;
+  sh:maxCount 1 .
 
 time:BeforeEventConstraintShape
   a sh:NodeShape ;
   sh:targetClass time:BeforeEventConstraint ;
-  sh:and(
-    time:RefEventShape
-    [
-      sh:path time:ref-event ;
-      sh:maxCount 1 ;
-    ]
-  ) .
+  sh:property time:BeforeEventShape .
+
+time:AfterEventConstraintShape
+  a sh:NodeShpe ;
+  sh:targetClass time:AfterEventConstraint ;
+  sh:property time:AfterEventShape .
+
+time:DuringEventsConstraintShape
+  a sh:NodeShape ;
+  sh:targetClass time:DuringEventsConstraint ;
+  sh:property time:BeforeEventShape ;
+  sh:property time:AfterEventShape .

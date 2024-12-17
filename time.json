@@ -2,12 +2,14 @@
     "@context": {
         "time": "https://secorolab.github.io/metamodels/time#",
         "Event": { "@id": "time:Event" },
-        "ref-event": { "@id": "time:ref-event", "@type": "@id" },
 
         "TimeConstraint": { "@id": "time:TimeConstraint" },
         "of-constraint": { "@id": "time:of-constraint", "@type": "@id" },
 
         "BeforeEventConstraint": { "@id": "time:BeforeEventConstraint" },
-        "AfterEventConstraint": { "@id": "time:AfterEventConstraint" }
+        "AfterEventConstraint": { "@id": "time:AfterEventConstraint" },
+        "DuringEventsConstraint": { "@id": "time:DuringEventsConstraint" },
+        "before-event": { "@id": "time:before-event", "@type": "@id" },
+        "after-event": { "@id": "time:after-event", "@type": "@id" }
     }
 }
