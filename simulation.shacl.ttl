@@ -1,0 +1,14 @@
+# SPDX-License-Identifier:  MPL-2.0
+# Author: Minh Nguyen (minh@mail.minhnh.com)
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix sim: <https://secorolab.github.io/metamodels/simulation#> .
+
+sim:ResourceWithPathShape
+  a sh:NodeShape ;
+  sh:targetClass sim:ResourceWithPath ;
+  sh:property [
+    sh:path sim:path ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] .
+

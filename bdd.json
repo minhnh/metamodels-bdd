@@ -1,5 +1,6 @@
 {
     "@context": {
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
         "bdd": "https://secorolab.github.io/metamodels/acceptance-criteria/bdd#",
 
         "UserStory": { "@id": "bdd:UserStory" },
@@ -16,27 +17,43 @@
         "Then": { "@id": "bdd:Then" },
 
         "WhenEvent": { "@id": "bdd:WhenEvent" },
+        "WhenBehaviour": { "@id": "bdd:WhenBehaviour" },
 
         "ScenarioVariable": { "@id": "bdd:ScenarioVariable" },
-        "of-variable": { "@id": "bdd:of-variable", "@type": "@id" },
+        "variable": { "@id": "bdd:ref-variable", "@type": "@id" },
+        "variable-list": { "@id": "bdd:variable-list", "@container": "@list", "@type": "@id" },
 
         "TaskVariation": { "@id": "bdd:TaskVariation" },
         "has-variation": { "@id": "bdd:has-variation", "@type": "@id" },
-        "can-be": { "@id": "bdd:can-be", "@type": "@id" },
 
-        "Fluent": { "@id": "bdd:Fluent" },
-        "predicate": { "@id": "bdd:predicate", "@type": "@id" },
-        "of-fluent": { "@id": "bdd:of-fluent", "@type": "@id" },
+        "TableVariation": { "@id": "bdd:TableVariation" },
+        "rows": { "@id": "bdd:rows", "type": "@id", "@container": "@list" },
+
+        "CartesianProductVariation": { "@id": "bdd:CartesianProductVariation" },
+        "of-sets": { "@id": "bdd:of-sets", "type": "@id", "@container": "@list" },
+
+        "Combination": { "@id": "bdd:Combination" },
+        "Permutation": { "@id": "bdd:Permutation" },
+        "repetition": { "@id": "bdd:repetition-allowed", "@type": "xsd:boolean" },
+        "length": { "@id": "bdd:length", "@type": "xsd:positiveInteger" },
+        "from": { "@id": "bdd:from", "@container": "@list", "@type": "@id" },
+
+        "ForAll": { "@id": "bdd:ForAll" },
+        "ThereExists": { "@id": "bdd:ThereExists" },
+        "in-set": { "@id": "bdd:in-set", "@type": "@id" },
 
         "FluentClause": { "@id": "bdd:FluentClause" },
         "clause-of": { "@id": "bdd:clause-of", "@type": "@id" },
-        "has-clause": { "@id": "bdd:has-clause", "@type": "@id" },
-        "holds": { "@id": "bdd:holds", "@type": "@id" },
+        "has-clause": {
+            "@id": "bdd:has-clause", "@container": "@list", "@type": "@id"
+        },
         "holds-at": { "@id": "bdd:holds-at", "@type": "@id" },
 
         "LocatedAtPredicate": { "@id": "bdd:LocatedAtPredicate" },
         "IsNearPredicate": { "@id": "bdd:IsNearPredicate" },
         "IsHeldPredicate": { "@id": "bdd:IsHeldPredicate" },
+        "MoveSafelyPredicate": { "@id": "bdd:MoveSafelyPredicate" },
+        "SortedIntoPredicate": { "@id": "bdd:SortedIntoPredicate" },
 
         "ref-workspace": { "@id": "bdd:ref-workspace", "@type": "@id" },
         "ref-object": { "@id": "bdd:ref-object", "@type": "@id" },
@@ -45,12 +62,24 @@
         "ScenarioTemplate": { "@id": "bdd:ScenarioTemplate" },
         "of-template": { "@id": "bdd:of-template", "@type": "@id" },
 
+        "ScenarioVariant": { "@id": "bdd:ScenarioVariant" },
+        "of-variant": { "@id": "bdd:of-variant", "@type": "@id" },
+
         "Scene": { "@id": "bdd:Scene" },
         "of-scene": { "@id": "bdd:of-scene", "@type": "@id" },
         "has-scene": { "@id": "bdd:has-scene", "@type": "@id" },
 
         "SceneHasObjects": { "@id": "bdd:SceneHasObjects" },
         "SceneHasWorkspaces": { "@id": "bdd:SceneHasWorkspaces" },
-        "SceneHasAgents": { "@id": "bdd:SceneHasAgents" }
+        "SceneHasAgents": { "@id": "bdd:SceneHasAgents" },
+
+        "ScenarioExecution": { "@id": "bdd:ScenarioExecution" },
+        "SimulatedExecution": { "@id": "bdd:SimulatedExecution" },
+
+        "BehaviourImplementation": { "@id": "bdd:BehaviourImplementation" },
+        "has-behaviour-impl": { "@id": "bdd:has-behaviour-impl", "@type": "@id" },
+
+        "FluentImplementation": { "@id": "bdd:FluentImplementation" },
+        "has-fluent-impl": { "@id": "bdd:has-fluent-impl", "@type": "@id" }
     }
 }

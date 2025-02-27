@@ -1,0 +1,23 @@
+# SPDX-License-Identifier:  MPL-2.0
+# Author: Minh Nguyen (minh@mail.minhnh.com)
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix agn: <https://secorolab.github.io/metamodels/agent#> .
+
+# agn:of-agent must refer to a agn:Agent
+agn:OfAgentShape
+  a sh:PropertyShape ;
+  sh:description ":of-agent must link to exactly 1 :Agent" ;
+  sh:path agn:of-agent ;
+  sh:class agn:Agent ;
+  sh:minCount 1 ;
+  sh:maxCount 1 .
+
+agn:ModelledAgentShape
+  a sh:NodeShape ;
+  sh:targetClass agn:ModelledAgent ;
+  sh:property [
+    sh:path agn:has-agent-model ;
+    sh:class agn:AgentModel;
+    sh:minCount 1 ;
+  ] ;
+  sh:property agn:OfAgentShape .

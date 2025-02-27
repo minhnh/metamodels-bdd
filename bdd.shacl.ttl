@@ -1,11 +1,67 @@
 # SPDX-License-Identifier:  MPL-2.0
 # Author: Minh Nguyen (minh@mail.minhnh.com)
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix bdd: <https://secorolab.github.io/metamodels/acceptance-criteria/bdd#> .
+@prefix bhv: <https://secorolab.github.io/metamodels/behaviour#> .
 @prefix time: <https://secorolab.github.io/metamodels/time#> .
 @prefix env: <https://secorolab.github.io/metamodels/environment#> .
 @prefix agn: <https://secorolab.github.io/metamodels/agent#> .
 @prefix task: <https://secorolab.github.io/metamodels/task#> .
+
+#######################################
+# Property shapes
+#######################################
+bdd:OfScenarioShape
+  a sh:PropertyShape ;
+  sh:description ":of-scenario must link to :Scenario" ;
+  sh:path bdd:of-scenario ;
+  sh:class bdd:Scenario ;
+  sh:minCount 1 ;
+  sh:maxCount 1 .
+
+bdd:OfSceneShape
+  a sh:PropertyShape ;
+  sh:description ":of-scene must link to :Scene" ;
+  sh:path bdd:of-scene ;
+  sh:class bdd:Scene ;
+  sh:minCount 1 ;
+  sh:maxCount 1 .
+
+task:OfTaskShape
+  a sh:PropertyShape ;
+  sh:description ":of-task must link to :Task" ;
+  sh:path task:of-task ;
+  sh:class task:Task ;
+  sh:minCount 1 ;
+  sh:maxCount 1 .
+
+bhv:OfBehaviourShape
+  a sh:PropertyShape ;
+  sh:description ":of-behaviour must link to :Behaviour" ;
+  sh:path bhv:of-behaviour ;
+  sh:class bhv:Behaviour ;
+  sh:minCount 1 ;
+  sh:maxCount 1 .
+
+bdd:RefVariableShape
+  a sh:PropertyShape ;
+  sh:description ":ref-variable must link to :ScenarioVariable" ;
+  sh:path bdd:ref-variable ;
+  sh:class bdd:ScenarioVariable ;
+  sh:minCount 1 ;
+  sh:maxCount 1 .
+
+bdd:HasClauseShape
+  a sh:PropertyShape ;
+  sh:path bdd:has-clause ;
+  sh:maxCount 1 .
+
+bdd:InSetShape
+  a sh:PropertyShape ;
+  sh:path bdd:in-set ;
+  sh:minCount 1 ;
+  sh:maxCount 1 .
 
 #######################################
 # Basic shape for Scenario
@@ -14,6 +70,8 @@
 bdd:ScenarioShape
   a sh:NodeShape ;
   sh:targetClass bdd:Scenario ;
+  sh:property task:OfTaskShape ;
+  sh:property bhv:OfBehaviourShape;
   sh:property [
     sh:path bdd:given ;
     sh:class bdd:Given ;
@@ -32,15 +90,6 @@ bdd:ScenarioShape
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] .
-
-# bdd:of-scenario must refer to a bdd:Scenario
-bdd:OfScenarioShape
-  a sh:PropertyShape ;
-  sh:description ":of-scenario must link to :Scenario" ;
-  sh:path bdd:of-scenario ;
-  sh:class bdd:Scenario ;
-  sh:minCount 1 ;
-  sh:maxCount 1 .
 
 # bdd:Given, bdd:When, and bdd:Then must be associtated with exactly 1 bdd:Scenario
 bdd:GivenShape
@@ -74,7 +123,7 @@ bdd:ThenShape
   ] .
 
 #######################################
-# FluentClause shape
+# Clauses shape
 #######################################
 bdd:FluentClauseShape
   a sh:NodeShape ;
@@ -90,14 +139,19 @@ bdd:FluentClauseShape
     )
   ] ;
   sh:property [
-    sh:path bdd:holds ;
-    sh:minCount 1 ;
-    sh:maxCount 1 ;
-    sh:class bdd:Fluent ;
-  ] ;
-  sh:property [
     sh:path bdd:holds-at ;
     sh:class time:TimeConstraint ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] .
+
+bdd:WhenBehaviourShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:WhenBehaviour ;
+  sh:property bhv:OfBehaviourShape ;
+  sh:property [
+    sh:path bdd:clause-of ;
+    sh:class bdd:When ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] .
@@ -115,23 +169,17 @@ bdd:ScenarioTemplateShape
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] ;
-  sh:property [
-    sh:path bdd:has-clause;
-    sh:class bdd:FluentClause ;
-    sh:minCount 1 ;
-  ] .
+  sh:and (
+    bdd:HasClauseShape
+    [
+      sh:path bdd:has-clause ;
+      sh:minCount 1 ;
+    ]
+  ) .
 
 #######################################
 # Scene shape
 #######################################
-bdd:OfSceneShape
-  a sh:PropertyShape ;
-  sh:description ":of-scene must link to :Scene" ;
-  sh:path bdd:of-scene ;
-  sh:class bdd:Scene ;
-  sh:minCount 1 ;
-  sh:maxCount 1 .
-
 bdd:SceneHasObjectsShape
   a sh:NodeShape ;
   sh:targetClass bdd:SceneHasObjects ;
@@ -163,27 +211,104 @@ bdd:SceneHasAgentsShape
   ] .
 
 #######################################
+# Quantifier shape
+#######################################
+bdd:ForAllShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:ForAll ;
+  sh:property bdd:RefVariableShape ;
+  sh:property bdd:InSetShape ;
+  sh:property [
+    sh:path bdd:clause-of ;
+    sh:class bdd:When ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:and (
+    bdd:HasClauseShape
+    [
+      sh:path bdd:has-clause ;
+      sh:minCount 1 ;
+    ]
+  ) .
+
+bdd:ThereExistsShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:ThereExists ;
+  sh:property bdd:RefVariableShape ;
+  sh:property bdd:InSetShape ;
+  sh:property [
+    sh:path bdd:clause-of ;
+    sh:or (
+      [ sh:class bdd:Given ; ]
+      [ sh:class bdd:Then; ]
+    ) ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:and (
+    bdd:HasClauseShape
+    [
+      sh:path bdd:has-clause ;
+      sh:minCount 1 ;
+    ]
+  ) .
+
+#######################################
 # ScenarioVariant and UserStory shape
 #######################################
 bdd:TaskVariationShape
   a sh:NodeShape ;
   sh:targetClass bdd:TaskVariation ;
+  sh:property task:OfTaskShape .
+
+bdd:CombinationShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:Combination ;
   sh:property [
-    sh:path task:of-task ;
-    sh:class task:Task ;
+    sh:path bdd:repetition-allowed ;
+    sh:datatype xsd:boolean ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] ;
   sh:property [
-    sh:path bdd:of-variable ;
-    sh:class bdd:ScenarioVariable ;
+    sh:path bdd:length ;
+    sh:datatype xsd:positiveInteger ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] ;
   sh:property [
-    sh:path bdd:can-be ;
-    sh:nodeKind sh:IRI ;
+    sh:path bdd:from ;
     sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] .
+
+bdd:TableVariationShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:TableVariation ;
+  sh:property [
+    sh:path bdd:variable-list ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path bdd:rows ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] .
+
+bdd:CartesianProductVariationShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:CartesianProductVariation ;
+  sh:property [
+    sh:path bdd:variable-list ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path bdd:of-sets ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
   ] .
 
 bdd:ScenarioVariantShape
@@ -195,6 +320,7 @@ bdd:ScenarioVariantShape
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] ;
+  sh:property bdd:HasClauseShape ;
   sh:property [
     sh:path bdd:has-scene ;
     sh:or (
@@ -206,6 +332,8 @@ bdd:ScenarioVariantShape
   sh:property [
     sh:path bdd:has-variation ;
     sh:class bdd:TaskVariation ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
   ] .
 
 bdd:UserStoryShape
