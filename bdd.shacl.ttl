@@ -60,6 +60,7 @@ bdd:HasClauseShape
 bdd:InSetShape
   a sh:PropertyShape ;
   sh:path bdd:in-set ;
+  sh:class bdd:Set ;
   sh:minCount 1 ;
   sh:maxCount 1 .
 
@@ -211,8 +212,16 @@ bdd:SceneHasAgentsShape
   ] .
 
 #######################################
-# Quantifier shape
+# Set & Quantifier shape
 #######################################
+bdd:ConstantSetShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:ConstantSet ;
+  sh:property [
+    sh:path bdd:elements ;
+    sh:minCount 1 ;
+  ] .
+
 bdd:ForAllShape
   a sh:NodeShape ;
   sh:targetClass bdd:ForAll ;
