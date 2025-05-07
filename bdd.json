@@ -29,6 +29,10 @@
         "TableVariation": { "@id": "bdd:TableVariation" },
         "rows": { "@id": "bdd:rows", "type": "@id", "@container": "@list" },
 
+        "Set": { "@id": "bdd:Set" },
+        "ConstantSet": { "@id": "bdd:Set" },
+        "elements": { "@id": "bdd:elements", "@container": "@set", "@type": "@id"  },
+
         "CartesianProductVariation": { "@id": "bdd:CartesianProductVariation" },
         "of-sets": { "@id": "bdd:of-sets", "type": "@id", "@container": "@list" },
 
@@ -36,7 +40,7 @@
         "Permutation": { "@id": "bdd:Permutation" },
         "repetition": { "@id": "bdd:repetition-allowed", "@type": "xsd:boolean" },
         "length": { "@id": "bdd:length", "@type": "xsd:positiveInteger" },
-        "from": { "@id": "bdd:from", "@container": "@list", "@type": "@id" },
+        "from": { "@id": "bdd:from", "@type": "@id" },
 
         "ForAll": { "@id": "bdd:ForAll" },
         "ThereExists": { "@id": "bdd:ThereExists" },
