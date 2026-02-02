@@ -139,12 +139,10 @@ bdd:FluentClauseShape
       [ sh:class bdd:Then; ]
     )
   ] ;
-  sh:property [
-    sh:path bdd:holds-at ;
-    sh:class time:TimeConstraint ;
-    sh:minCount 1 ;
-    sh:maxCount 1 ;
-  ] .
+  sh:and (
+    [ sh:class bdd:FluentClause ]
+    [ sh:class time:TimeConstraint ]
+  ) .
 
 bdd:WhenBehaviourShape
   a sh:NodeShape ;
