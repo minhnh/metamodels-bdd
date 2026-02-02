@@ -3,15 +3,6 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix time: <https://secorolab.github.io/metamodels/time#> .
 
-time:OfConstraintShape
-  a sh:PropertyShape ;
-  sh:description ":of-constraint must link to :TimeConstraint" ;
-  sh:path time:of-constraint ;
-  sh:class time:TimeConstraint ;
-  sh:nodeKind sh:IRI ;
-  sh:minCount 1 ;
-  sh:maxCount 1 .
-
 time:BeforeEventShape
   a sh:PropertyShape ;
   sh:description ":before-event must link to exactly 1 :Event" ;

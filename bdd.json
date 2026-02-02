@@ -51,7 +51,6 @@
         "has-clause": {
             "@id": "bdd:has-clause", "@container": "@list", "@type": "@id"
         },
-        "holds-at": { "@id": "bdd:holds-at", "@type": "@id" },
 
         "LocatedAtPredicate": { "@id": "bdd:LocatedAtPredicate" },
         "IsNearPredicate": { "@id": "bdd:IsNearPredicate" },
