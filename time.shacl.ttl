@@ -24,15 +24,27 @@ time:AfterEventShape
 time:BeforeEventConstraintShape
   a sh:NodeShape ;
   sh:targetClass time:BeforeEventConstraint ;
-  sh:property time:BeforeEventShape .
+  sh:property time:BeforeEventShape ;
+  sh:and (
+    [ sh:class time:BeforeEventConstraint ]
+    [ sh:class time:TimeConstraint ]
+  ) .
 
 time:AfterEventConstraintShape
   a sh:NodeShpe ;
   sh:targetClass time:AfterEventConstraint ;
-  sh:property time:AfterEventShape .
+  sh:property time:AfterEventShape ;
+  sh:and (
+    [ sh:class time:AfterEventConstraint ]
+    [ sh:class time:TimeConstraint ]
+  ) .
 
 time:DuringEventsConstraintShape
   a sh:NodeShape ;
   sh:targetClass time:DuringEventsConstraint ;
   sh:property time:BeforeEventShape ;
-  sh:property time:AfterEventShape .
+  sh:property time:AfterEventShape ;
+  sh:and (
+    [ sh:class time:DuringEventsConstraint ]
+    [ sh:class time:TimeConstraint ]
+  ) .

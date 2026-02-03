@@ -153,7 +153,11 @@ bdd:WhenBehaviourShape
     sh:class bdd:When ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
-  ] .
+  ] ;
+  sh:and (
+    [ sh:class bdd:WhenBehaviour ]
+    [ sh:class time:TimeConstraint ]
+  ) .
 
 #######################################
 # ScenarioTemplate shape
@@ -174,6 +178,10 @@ bdd:ScenarioTemplateShape
       sh:path bdd:has-clause ;
       sh:minCount 1 ;
     ]
+  ) ;
+  sh:and (
+    [ sh:class bdd:ScenarioTemplate ]
+    [ sh:class time:TimeConstraint ]
   ) .
 
 #######################################
