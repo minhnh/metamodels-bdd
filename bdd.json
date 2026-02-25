@@ -80,9 +80,6 @@
         "SimulatedExecution": { "@id": "bdd:SimulatedExecution" },
 
         "BehaviourImplementation": { "@id": "bdd:BehaviourImplementation" },
-        "has-behaviour-impl": { "@id": "bdd:has-behaviour-impl", "@type": "@id" },
-
-        "FluentImplementation": { "@id": "bdd:FluentImplementation" },
-        "has-fluent-impl": { "@id": "bdd:has-fluent-impl", "@type": "@id" }
+        "has-behaviour-impl": { "@id": "bdd:has-behaviour-impl", "@type": "@id" }
     }
 }
