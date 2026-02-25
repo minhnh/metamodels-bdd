@@ -1,0 +1,20 @@
+{
+    "@context": {
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "obs": "https://secorolab.github.io/metamodels/observation#",
+        "ros": "https://index.ros.org/p/",
+
+        "ObservationProvider": { "@id": "obs:ObservationProvider" },
+
+
+        "ObservationPolicy": { "@id": "obs:ObservationPolicy" },
+        "provider": {"@id": "obs:has-provider", "@type": "@id"},
+
+        "ROSTopic": { "@id": "ros:ROSTopic" },
+        "topic-name": { "@id": "ros:topic-name", "@type": "xsd:string" },
+        "message-type": { "@id": "ros:message-type", "@type": "xsd:string" },
+
+        "HasFrameId": { "@id": "ros:HasFrameId" },
+        "frame-id": { "@id": "ros:frame-id", "@type": "xsd:string" }
+    }
+}
