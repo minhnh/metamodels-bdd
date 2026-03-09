@@ -57,6 +57,11 @@
         "IsHeldPredicate": { "@id": "bdd:IsHeldPredicate" },
         "MoveSafelyPredicate": { "@id": "bdd:MoveSafelyPredicate" },
         "SortedIntoPredicate": { "@id": "bdd:SortedIntoPredicate" },
+        "HasConfigPredicate": { "@id": "bdd:HasConfigPredicate" },
+
+        "config-target": { "@id": "bdd:config-target", "@type": "@id" },
+        "config-name": { "@id": "bdd:config-name", "@type": "xsd:string" },
+        "config-var": { "@id": "bdd:config-variable", "@type": "@id" },
 
         "ref-workspace": { "@id": "bdd:ref-workspace", "@type": "@id" },
         "ref-object": { "@id": "bdd:ref-object", "@type": "@id" },
