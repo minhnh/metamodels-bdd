@@ -12,6 +12,6 @@
         "DuringEventsConstraint": { "@id": "time:DuringEventsConstraint" },
         "before-event": { "@id": "time:before-event", "@type": "@id" },
         "after-event": { "@id": "time:after-event", "@type": "@id" },
-        "horizon-seconds": { "@id": "time:horizon-seconds", "@type": "@xsd:float" }
+        "horizon-seconds": { "@id": "time:horizon-seconds", "@type": "xsd:float" }
     }
 }
