@@ -57,8 +57,13 @@
         "IsHeldPredicate": { "@id": "bdd:IsHeldPredicate" },
         "MoveSafelyPredicate": { "@id": "bdd:MoveSafelyPredicate" },
         "SortedIntoPredicate": { "@id": "bdd:SortedIntoPredicate" },
-        "HasConfigPredicate": { "@id": "bdd:HasConfigPredicate" },
 
+        "StringTemplatePredicate": { "@id": "bdd:StringTemplatePredicate" },
+        "tmpl-str": { "@id": "bdd:template-string", "@type": "xsd:string" },
+        "arg-names": { "@id": "bdd:argument-names", "@type": "xsd:string", "@container": "@list" },
+        "arg-variables": { "@id": "bdd:argument-variables", "@type": "@id", "@container": "@list" },
+
+        "HasConfigPredicate": { "@id": "bdd:HasConfigPredicate" },
         "config-target": { "@id": "bdd:config-target", "@type": "@id" },
         "config-name": { "@id": "bdd:config-name", "@type": "xsd:string" },
         "config-var": { "@id": "bdd:config-variable", "@type": "@id" },
