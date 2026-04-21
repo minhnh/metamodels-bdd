@@ -159,6 +159,26 @@ bdd:WhenBehaviourShape
     [ sh:class time:TimeConstraint ]
   ) .
 
+bdd:StringTemplatePredicateShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:StringTemplatePredicate ;
+  sh:property [
+    sh:path bdd:template-string ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path bdd:argument-names ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path bdd:argument-variables ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] .
+
 #######################################
 # ScenarioTemplate shape
 #######################################
