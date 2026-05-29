@@ -48,6 +48,7 @@
 
         "FluentClause": { "@id": "bdd:FluentClause" },
         "clause-of": { "@id": "bdd:clause-of", "@type": "@id" },
+        "of-clause": { "@id": "bdd:of-clause", "@type": "@id" },
         "has-clause": {
             "@id": "bdd:has-clause", "@container": "@list", "@type": "@id"
         },
@@ -90,6 +91,6 @@
         "SimulatedExecution": { "@id": "bdd:SimulatedExecution" },
 
         "BehaviourImplementation": { "@id": "bdd:BehaviourImplementation" },
-        "has-behaviour-impl": { "@id": "bdd:has-behaviour-impl", "@type": "@id" }
+        "has-behaviour-impl": { "@id": "bdd:has-behaviour-implementation", "@type": "@id" }
     }
 }

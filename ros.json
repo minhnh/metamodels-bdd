@@ -1,0 +1,14 @@
+{
+    "@context": {
+        "ros": "https://index.ros.org/p/",
+        "ROSTopic": { "@id": "ros:Topic" },
+        "ROSAction": { "@id": "ros:Action" },
+        "ROSService": { "@id": "ros:Service" },
+
+        "channel-name": { "@id": "ros:channel-name", "@type": "xsd:string" },
+        "type-name": { "@id": "ros:type-name", "@type": "xsd:string" },
+
+        "HasFrameId": { "@id": "ros:HasFrameId" },
+        "frame-id": { "@id": "ros:frame-id", "@type": "xsd:string" }
+    }
+}
