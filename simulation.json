@@ -7,15 +7,6 @@
 
         "UsdFile": { "@id": "usd:UsdFile" },
 
-        "SystemResource": { "@id": "sim:SystemResource" },
-        "IsaacResource": { "@id": "isaacsim:IsaacResource" },
-
-        "ResourceWithPath": { "@id": "sim:ResourceWithPath" },
-        "path": { "@id": "sim:path", "@type": "xsd:string" },
-
-        "SimulatedAgent": { "@id": "sim:SimulatedAgent" },
-        "agent-model": { "@id": "sim:agent-model", "@type": "@id"  },
-
-        "has-config": { "@id": "sim:has-config", "@type": "@json"  }
+        "IsaacResource": { "@id": "isaacsim:IsaacResource" }
     }
 }

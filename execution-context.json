@@ -1,0 +1,11 @@
+{
+    "@context": {
+        "exec": "https://secorolab.github.io/metamodels/execution-context#",
+
+        "SystemResource": { "@id": "exec:SystemResource" },
+        "ResourceWithPath": { "@id": "exec:ResourceWithPath" },
+        "path": { "@id": "exec:path", "@type": "xsd:string" },
+
+        "has-config": { "@id": "exec:has-config", "@type": "@json"  }
+    }
+}

@@ -2,6 +2,10 @@
     "@context": {
         "xsd": "http://www.w3.org/2001/XMLSchema#",
         "ros": "https://index.ros.org/p/",
+
+        "ROSPackage": { "@id": "ros:Package" },
+        "ros-pkg-name": { "@id": "ros:package-name", "@type": "xsd:string" },
+
         "ROSTopic": { "@id": "ros:Topic" },
         "ROSAction": { "@id": "ros:Action" },
         "ROSService": { "@id": "ros:Service" },
