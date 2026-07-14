@@ -1,6 +1,9 @@
 # SPDX-License-Identifier:  MPL-2.0
 # Author: Minh Nguyen (minh@mail.minhnh.com)
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix qudt-quant: <http://qudt.org/vocab/quantitykind/> .
 @prefix exec: <https://secorolab.github.io/metamodels/execution-context#> .
 
 exec:ResourceWithPathShape
@@ -8,6 +11,71 @@ exec:ResourceWithPathShape
   sh:targetClass exec:ResourceWithPath ;
   sh:property [
     sh:path exec:path ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] .
+
+# The execution context is itself typed RealWorld or Simulation (the platform is not
+# a separate node). name/version identify the platform openly (RealWorld: hardware/
+# driver id; Simulation: simulator id) and apply to both — hence optional here.
+exec:ExecutionContextShape
+  a sh:NodeShape ;
+  sh:targetClass exec:ExecutionContext ;
+  sh:or ( [ sh:class exec:RealWorld ] [ sh:class exec:Simulation ] ) ;
+  sh:property [
+    sh:path exec:runs-scene ;
+    sh:nodeKind sh:IRI ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path exec:timestep ;
+    sh:node exec:TimeQuantityShape ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path exec:platform-name ;
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path exec:platform-version ;
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+  ] .
+
+# A simulator's name is required — the parser dispatches the backend off it.
+exec:SimulationShape
+  a sh:NodeShape ;
+  sh:targetClass exec:Simulation ;
+  sh:property [
+    sh:path exec:platform-name ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] .
+
+exec:TimeQuantityShape
+  a sh:NodeShape ;
+  sh:class qudt:Quantity ;
+  sh:property [
+    sh:path qudt:hasQuantityKind ;
+    sh:hasValue qudt-quant:Time ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path qudt:unit ;
+    sh:nodeKind sh:IRI ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path qudt:value ;
+    sh:nodeKind sh:Literal ;
+    sh:datatype xsd:double ;
+    sh:minExclusive 0.0 ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] .

@@ -7,6 +7,16 @@
         "ResourceWithPath": { "@id": "exec:ResourceWithPath" },
         "path": { "@id": "exec:path", "@type": "xsd:string" },
 
-        "has-config": { "@id": "exec:has-config", "@type": "@json"  }
+        "has-config": { "@id": "exec:has-config", "@type": "@json"  },
+
+        "ExecutionContext": { "@id": "exec:ExecutionContext" },
+        "runs-scene": { "@id": "exec:runs-scene", "@type": "@id" },
+        "timestep": { "@id": "exec:timestep", "@type": "@id" },
+
+        "RealWorld": { "@id": "exec:RealWorld" },
+        "Simulation": { "@id": "exec:Simulation" },
+
+        "platform-name": { "@id": "exec:platform-name", "@type": "xsd:string" },
+        "platform-version": { "@id": "exec:platform-version", "@type": "xsd:string" }
     }
 }
