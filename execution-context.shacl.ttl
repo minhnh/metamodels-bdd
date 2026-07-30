@@ -4,7 +4,23 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix qudt-quant: <http://qudt.org/vocab/quantitykind/> .
+@prefix schema: <https://schema.org/> .
 @prefix exec: <https://secorolab.github.io/metamodels/execution-context#> .
+
+exec:NamedSoftwareResourceShape
+  a sh:NodeShape ;
+  sh:targetClass exec:Package, exec:Library ;
+  sh:property [
+    sh:path schema:name ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path schema:description ;
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+  ] .
 
 exec:ResourceWithPathShape
   a sh:NodeShape ;
@@ -79,4 +95,3 @@ exec:TimeQuantityShape
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] .
-

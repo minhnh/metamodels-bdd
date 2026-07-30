@@ -4,7 +4,6 @@
         "ros": "https://index.ros.org/p/",
 
         "ROSPackage": { "@id": "ros:Package" },
-        "ros-pkg-name": { "@id": "ros:package-name", "@type": "xsd:string" },
 
         "ROSTopic": { "@id": "ros:Topic" },
         "ROSAction": { "@id": "ros:Action" },
