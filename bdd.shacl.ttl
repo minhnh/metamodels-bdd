@@ -159,6 +159,28 @@ bdd:WhenBehaviourShape
     [ sh:class time:TimeConstraint ]
   ) .
 
+bdd:HasConfigPredicateShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:HasConfigPredicate ;
+  sh:property [
+    sh:path bdd:config-name ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path bdd:config-target ;
+    #sh:class bdd:ScenarioVariable ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path bdd:config-variable ;
+    sh:class bdd:ScenarioVariable ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] .
+
 bdd:StringTemplatePredicateShape
   a sh:NodeShape ;
   sh:targetClass bdd:StringTemplatePredicate ;
@@ -223,7 +245,11 @@ bdd:SceneHasWorkspacesShape
   sh:property bdd:OfSceneShape ;
   sh:property [
     sh:path env:has-workspace ;
-    sh:class env:Workspace ;
+    sh:or (
+      [ sh:class env:Workspace ]
+      [ sh:class env:WorkspaceHasObject ]
+      [ sh:class env:WorkspaceHasWorkspace ]
+    ) ;
     sh:minCount 1 ;
   ] .
 
