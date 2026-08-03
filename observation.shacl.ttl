@@ -1,0 +1,79 @@
+# SPDX-License-Identifier: MPL-2.0
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bdd: <https://secorolab.github.io/metamodels/acceptance-criteria/bdd#> .
+@prefix obs: <https://secorolab.github.io/metamodels/observation#> .
+@prefix py: <https://secorolab.github.io/metamodels/languages/python#> .
+@prefix ros: <https://index.ros.org/p/> .
+@prefix cstr-ext: <https://secorolab.github.io/metamodels/task/constraint#> .
+
+obs:ObservationShape
+    a sh:NodeShape ;
+    sh:targetClass obs:Observation ;
+    sh:property [
+        sh:path obs:has-provider ;
+        sh:class obs:ObservationProvider ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path obs:observes-target ;
+        sh:nodeKind sh:IRI ;
+        sh:maxCount 1 ;
+    ] .
+
+obs:ProviderBackedPolicyShape
+    a sh:NodeShape ;
+    sh:targetClass obs:ObservationPolicy ;
+    sh:or (
+        [ sh:class ros:Topic ]
+        [
+            sh:property [
+                sh:path obs:has-observation ;
+                sh:class obs:Observation ;
+                sh:minCount 1 ;
+            ] ;
+            sh:property [
+                sh:path cstr-ext:has-constraint ;
+                sh:minCount 1 ;
+            ]
+        ]
+        [
+            sh:class py:ModuleAttribute ;
+            sh:property [
+                sh:path obs:has-observation ;
+                sh:class obs:Observation ;
+                sh:minCount 1 ;
+            ]
+        ]
+    ) .
+
+obs:PoseProviderShape
+    a sh:NodeShape ;
+    sh:targetClass obs:PoseProvider ;
+    sh:class obs:ObservationProvider ;
+    sh:or (
+        [ sh:class ros:Topic ]
+        [ sh:class ros:SimulationEntityStateProvider ]
+    ) .
+
+ros:TopicProviderShape
+    a sh:NodeShape ;
+    sh:targetClass ros:Topic ;
+    sh:property [
+        sh:path ros:channel-name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path ros:type-name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .
+
+ros:SimulationEntityStateProviderShape
+    a sh:NodeShape ;
+    sh:targetClass ros:SimulationEntityStateProvider ;
+    sh:class obs:PoseProvider .

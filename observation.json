@@ -4,9 +4,15 @@
         "obs": "https://secorolab.github.io/metamodels/observation#",
 
         "ObservationProvider": { "@id": "obs:ObservationProvider" },
-        "has-provider": {"@id": "obs:has-provider", "@type": "@id"},
+        "has-provider": { "@id": "obs:has-provider", "@type": "@id" },
 
         "ObservationPolicy": { "@id": "obs:ObservationPolicy" },
-        "has-policy": {"@id": "obs:has-policy", "@type": "@id"}
+        "has-policy": { "@id": "obs:has-policy", "@type": "@id" },
+
+        "Observation": { "@id": "obs:Observation" },
+        "has-observation": { "@id": "obs:has-observation", "@type": "@id" },
+        "observes-target": { "@id": "obs:observes-target", "@type": "@id" },
+
+        "PoseProvider": { "@id": "obs:PoseProvider" }
     }
 }
