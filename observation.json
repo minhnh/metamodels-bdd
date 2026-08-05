@@ -2,6 +2,7 @@
     "@context": {
         "xsd": "http://www.w3.org/2001/XMLSchema#",
         "obs": "https://secorolab.github.io/metamodels/observation#",
+        "sens": "https://secorolab.github.io/metamodels/robot/sensors#",
 
         "ObservationProvider": { "@id": "obs:ObservationProvider" },
         "has-provider": { "@id": "obs:has-provider", "@type": "@id" },
@@ -13,6 +14,7 @@
         "has-observation": { "@id": "obs:has-observation", "@type": "@id" },
         "observes-target": { "@id": "obs:observes-target", "@type": "@id" },
 
-        "PoseProvider": { "@id": "obs:PoseProvider" }
+        "PoseProvider": { "@id": "obs:PoseProvider" },
+        "update-rate": { "@id": "sens:update-rate", "@type": "xsd:double" }
     }
 }

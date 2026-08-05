@@ -6,6 +6,7 @@
 @prefix py: <https://secorolab.github.io/metamodels/languages/python#> .
 @prefix ros: <https://index.ros.org/p/> .
 @prefix cstr-ext: <https://secorolab.github.io/metamodels/task/constraint#> .
+@prefix sens: <https://secorolab.github.io/metamodels/robot/sensors#> .
 
 obs:ObservationShape
     a sh:NodeShape ;
@@ -76,4 +77,11 @@ ros:TopicProviderShape
 ros:SimulationEntityStateProviderShape
     a sh:NodeShape ;
     sh:targetClass ros:SimulationEntityStateProvider ;
-    sh:class obs:PoseProvider .
+    sh:class obs:PoseProvider ;
+    sh:property [
+        sh:path sens:update-rate ;
+        sh:datatype xsd:double ;
+        sh:minExclusive 0.0 ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .
