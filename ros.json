@@ -4,7 +4,6 @@
         "ros": "https://index.ros.org/p/",
 
         "ROSPackage": { "@id": "ros:Package" },
-
         "ROSTopic": { "@id": "ros:Topic" },
         "ROSAction": { "@id": "ros:Action" },
         "ROSService": { "@id": "ros:Service" },
@@ -13,6 +12,8 @@
         "type-name": { "@id": "ros:type-name", "@type": "xsd:string" },
 
         "HasFrameId": { "@id": "ros:HasFrameId" },
-        "frame-id": { "@id": "ros:frame-id", "@type": "xsd:string" }
+        "frame-id": { "@id": "ros:frame-id", "@type": "xsd:string" },
+
+        "SimulationEntityStateProvider": { "@id": "ros:SimulationEntityStateProvider" }
     }
 }
