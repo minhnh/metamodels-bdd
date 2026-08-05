@@ -15,6 +15,6 @@
         "observes-target": { "@id": "obs:observes-target", "@type": "@id" },
 
         "PoseProvider": { "@id": "obs:PoseProvider" },
-        "update-rate": { "@id": "sens:update-rate", "@type": "xsd:double" }
+        "update-rate": { "@id": "sens:update-rate", "@type": "@id" }
     }
 }

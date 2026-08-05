@@ -7,6 +7,9 @@
 @prefix ros: <https://index.ros.org/p/> .
 @prefix cstr-ext: <https://secorolab.github.io/metamodels/task/constraint#> .
 @prefix sens: <https://secorolab.github.io/metamodels/robot/sensors#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix qudt-quant: <http://qudt.org/vocab/quantitykind/> .
 
 obs:ObservationShape
     a sh:NodeShape ;
@@ -78,9 +81,33 @@ ros:SimulationEntityStateProviderShape
     a sh:NodeShape ;
     sh:targetClass ros:SimulationEntityStateProvider ;
     sh:class obs:PoseProvider ;
+    sh:class sosa:Sensor ;
     sh:property [
         sh:path sens:update-rate ;
-        sh:datatype xsd:double ;
+        sh:node sens:FrequencyQuantityShape ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .
+
+
+sens:FrequencyQuantityShape
+    a sh:NodeShape ;
+    sh:class qudt:Quantity ;
+    sh:property [
+        sh:path qudt:hasQuantityKind ;
+        sh:hasValue qudt-quant:Frequency ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path qudt:unit ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path qudt:value ;
+        sh:nodeKind sh:Literal ;
         sh:minExclusive 0.0 ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
