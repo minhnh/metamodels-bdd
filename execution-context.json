@@ -8,20 +8,21 @@
         "ResourceWithPath": { "@id": "exec:ResourceWithPath" },
         "Package": { "@id": "exec:Package" },
         "Library": { "@id": "exec:Library" },
-        "name": { "@id": "schema:name", "@type": "xsd:string" },
-        "description": { "@id": "schema:description", "@type": "xsd:string" },
-        "path": { "@id": "exec:path", "@type": "xsd:string" },
-
-        "has-config": { "@id": "exec:has-config", "@type": "@json"  },
 
         "ExecutionContext": { "@id": "exec:ExecutionContext" },
-        "runs-scene": { "@id": "exec:runs-scene", "@type": "@id" },
-        "timestep": { "@id": "exec:timestep", "@type": "@id" },
-
         "RealWorld": { "@id": "exec:RealWorld" },
         "Simulation": { "@id": "exec:Simulation" },
 
-        "platform-name": { "@id": "exec:platform-name", "@type": "xsd:string" },
-        "platform-version": { "@id": "exec:platform-version", "@type": "xsd:string" }
+        "name": { "@id": "schema:name", "@type": "xsd:string" },
+        "description": { "@id": "schema:description", "@type": "xsd:string" },
+        "path": { "@id": "exec:path", "@type": "xsd:string" },
+        "model": { "@id": "schema:model", "@type": "xsd:string" },
+
+        "has-config": { "@id": "exec:has-config", "@type": "@json" },
+        "has-resource": { "@id": "exec:has-resource", "@type": "@id" },
+        "runs-scene": { "@id": "exec:runs-scene", "@type": "@id" },
+        "timestep": { "@id": "exec:timestep", "@type": "@id" },
+
+        "realizes": { "@id": "exec:realizes", "@type": "@id" }
     }
 }

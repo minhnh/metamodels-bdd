@@ -6,6 +6,10 @@
 @prefix qudt-quant: <http://qudt.org/vocab/quantitykind/> .
 @prefix schema: <https://schema.org/> .
 @prefix exec: <https://secorolab.github.io/metamodels/execution-context#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix agent: <https://secorolab.github.io/metamodels/agent#> .
+@prefix geom-struct: <https://comp-rob2b.github.io/metamodels/geometry/structural-entities#> .
 
 exec:NamedSoftwareResourceShape
   a sh:NodeShape ;
@@ -32,12 +36,13 @@ exec:ResourceWithPathShape
   ] .
 
 # The execution context is itself typed RealWorld or Simulation (the platform is not
-# a separate node). name/version identify the platform openly (RealWorld: hardware/
-# driver id; Simulation: simulator id) and apply to both — hence optional here.
+# a separate node). A name identifies the platform openly and applies to both — hence
+# optional here; real-world hardware is named per device, on the system realizing it.
 exec:ExecutionContextShape
   a sh:NodeShape ;
   sh:targetClass exec:ExecutionContext ;
   sh:or ( [ sh:class exec:RealWorld ] [ sh:class exec:Simulation ] ) ;
+  sh:class ssn:Deployment ;
   sh:property [
     sh:path exec:runs-scene ;
     sh:nodeKind sh:IRI ;
@@ -51,14 +56,16 @@ exec:ExecutionContextShape
     sh:maxCount 1 ;
   ] ;
   sh:property [
-    sh:path exec:platform-name ;
+    sh:path schema:name ;
     sh:datatype xsd:string ;
     sh:maxCount 1 ;
   ] ;
+  # A file the run reads rather than carries -- device addresses and credentials change
+  # nothing the controller computes and must not travel in an archived run graph.
   sh:property [
-    sh:path exec:platform-version ;
-    sh:datatype xsd:string ;
-    sh:maxCount 1 ;
+    sh:path exec:has-resource ;
+    sh:nodeKind sh:IRI ;
+    sh:class exec:SystemResource ;
   ] .
 
 # A simulator's name is required — the parser dispatches the backend off it.
@@ -66,7 +73,7 @@ exec:SimulationShape
   a sh:NodeShape ;
   sh:targetClass exec:Simulation ;
   sh:property [
-    sh:path exec:platform-name ;
+    sh:path schema:name ;
     sh:datatype xsd:string ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
@@ -92,6 +99,54 @@ exec:TimeQuantityShape
     sh:nodeKind sh:Literal ;
     sh:datatype xsd:double ;
     sh:minExclusive 0.0 ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] .
+
+
+
+# The hardware standing in for a modelled element. Model-to-reality correspondence is
+# outside SSN's scope, so the relation is local; its ends are not. The subject is the
+# deployed System, the object the scene element it realizes -- an agent, a kinematic tree,
+# or a sensor. Anything else is not an addressable target for a device.
+exec:RealizesShape
+  a sh:NodeShape ;
+  sh:targetSubjectsOf exec:realizes ;
+  sh:message "A device realizes an agent, a kinematic tree, or a sensor, and one of them." ;
+  sh:class ssn:System ;
+  sh:property [
+    sh:path exec:realizes ;
+    sh:nodeKind sh:IRI ;
+    sh:maxCount 1 ;
+    sh:or (
+      [ sh:class agent:Agent ]
+      [ sh:class geom-struct:KinematicTree ]
+      [ sh:class sosa:Sensor ]
+    ) ;
+  ] .
+
+# One element, one device: two Systems realizing the same element would leave the run with
+# no way to say which hardware it is talking to.
+exec:RealizedOnceShape
+  a sh:NodeShape ;
+  sh:targetObjectsOf exec:realizes ;
+  sh:message "An element is realized by one device." ;
+  sh:property [
+    sh:path [ sh:inversePath exec:realizes ] ;
+    sh:maxCount 1 ;
+  ] .
+
+
+
+# A device has to say which hardware it is: without the product, a run has no way to pick
+# the driver that talks to it. What the config calls the device is the element it realizes.
+exec:DeviceShape
+  a sh:NodeShape ;
+  sh:targetSubjectsOf exec:realizes ;
+  sh:message "A device states the product it is." ;
+  sh:property [
+    sh:path schema:model ;
+    sh:datatype xsd:string ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] .
