@@ -10,6 +10,7 @@
 
         "channel-name": { "@id": "ros:channel-name", "@type": "xsd:string" },
         "type-name": { "@id": "ros:type-name", "@type": "xsd:string" },
+        "field-path": { "@id": "ros:field-path", "@type": "xsd:string" },
 
         "HasFrameId": { "@id": "ros:HasFrameId" },
         "frame-id": { "@id": "ros:frame-id", "@type": "xsd:string" },
