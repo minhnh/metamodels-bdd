@@ -8,7 +8,13 @@
         "has-provider": { "@id": "obs:has-provider", "@type": "@id" },
 
         "ObservationPolicy": { "@id": "obs:ObservationPolicy" },
+        "DirectTrinaryPolicy": { "@id": "obs:DirectTrinaryPolicy" },
+        "EvaluatedObservationPolicy": { "@id": "obs:EvaluatedObservationPolicy" },
         "has-policy": { "@id": "obs:has-policy", "@type": "@id" },
+        "time-extractor": { "@id": "obs:time-extractor", "@type": "@id" },
+        "entity-mapper": { "@id": "obs:entity-mapper", "@type": "@id" },
+        "has-evaluator": { "@id": "obs:has-evaluator", "@type": "@id" },
+        "LinearDistanceEvaluator": { "@id": "obs:LinearDistanceEvaluator" },
 
         "Observation": { "@id": "obs:Observation" },
         "has-observation": { "@id": "obs:has-observation", "@type": "@id" },
