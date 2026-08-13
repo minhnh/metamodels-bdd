@@ -35,6 +35,28 @@ obs:ObservationShape
             )
         ] ;
         sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path obs:time-extractor ;
+        sh:class py:ModuleAttribute ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path obs:entity-mapper ;
+        sh:class py:ModuleAttribute ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:sparql [
+        sh:message "A targeted observation requires an entity mapper." ;
+        sh:select """
+            PREFIX obs: <https://secorolab.github.io/metamodels/observation#>
+            SELECT $this
+            WHERE {
+                $this obs:observes-target ?target .
+                FILTER NOT EXISTS { $this obs:entity-mapper ?mapper }
+            }
+        """ ;
     ] .
 
 obs:ObservationPolicyShape
@@ -63,35 +85,13 @@ obs:EvaluatedObservationPolicyShape
         sh:class obs:Observation ;
         sh:minCount 1 ;
     ] ;
-    sh:property [
-        sh:path obs:time-extractor ;
-        sh:class py:ModuleAttribute ;
-        sh:minCount 1 ;
-        sh:maxCount 1 ;
-    ] ;
-    sh:property [
-        sh:path obs:entity-mapper ;
-        sh:class py:ModuleAttribute ;
-        sh:maxCount 1 ;
-    ] ;
+    sh:property [ sh:path obs:time-extractor ; sh:maxCount 0 ] ;
+    sh:property [ sh:path obs:entity-mapper ; sh:maxCount 0 ] ;
     sh:property [
         sh:path obs:has-evaluator ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
         sh:node obs:EvaluatorShape ;
-    ] ;
-    sh:sparql [
-        sh:message "A variable observation target requires an entity mapper." ;
-        sh:select """
-            PREFIX bdd: <https://secorolab.github.io/metamodels/acceptance-criteria/bdd#>
-            PREFIX obs: <https://secorolab.github.io/metamodels/observation#>
-            SELECT $this
-            WHERE {
-                $this obs:has-observation/obs:observes-target ?target .
-                ?target a bdd:ScenarioVariable .
-                FILTER NOT EXISTS { $this obs:entity-mapper ?mapper }
-            }
-        """ ;
     ] .
 
 obs:EvaluatorShape
