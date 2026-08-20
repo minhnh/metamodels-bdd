@@ -4,7 +4,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix bdd: <https://secorolab.github.io/metamodels/acceptance-criteria/bdd#> .
 @prefix bhv: <https://secorolab.github.io/metamodels/behaviour#> .
-@prefix time: <https://secorolab.github.io/metamodels/time#> .
+@prefix tc: <https://secorolab.github.io/metamodels/time-constraint#> .
 @prefix env: <https://secorolab.github.io/metamodels/environment#> .
 @prefix agn: <https://secorolab.github.io/metamodels/agent#> .
 @prefix task: <https://secorolab.github.io/metamodels/task#> .
@@ -141,7 +141,7 @@ bdd:FluentClauseShape
   ] ;
   sh:and (
     [ sh:class bdd:FluentClause ]
-    [ sh:class time:TimeConstraint ]
+    [ sh:class tc:TimeConstraint ]
   ) .
 
 bdd:WhenBehaviourShape
@@ -156,7 +156,7 @@ bdd:WhenBehaviourShape
   ] ;
   sh:and (
     [ sh:class bdd:WhenBehaviour ]
-    [ sh:class time:TimeConstraint ]
+    [ sh:class tc:TimeConstraint ]
   ) .
 
 bdd:HasConfigPredicateShape
@@ -223,7 +223,7 @@ bdd:ScenarioTemplateShape
   ) ;
   sh:and (
     [ sh:class bdd:ScenarioTemplate ]
-    [ sh:class time:TimeConstraint ]
+    [ sh:class tc:TimeConstraint ]
   ) .
 
 #######################################
