@@ -90,6 +90,7 @@
         "ScenarioExecution": { "@id": "bdd:ScenarioExecution" },
         "SimulatedExecution": { "@id": "bdd:SimulatedExecution" },
 
+        "StringEntityMapper": { "@id": "bdd:StringEntityMapper" },
         "StringEntityMapping": { "@id": "bdd:StringEntityMapping" },
         "has-string-entity-mapping": { "@id": "bdd:has-string-entity-mapping", "@type": "@id" },
         "string-value": { "@id": "bdd:string-value", "@type": "xsd:string" },
