@@ -7,10 +7,12 @@
         "ROSTopic": { "@id": "ros:Topic" },
         "ROSAction": { "@id": "ros:Action" },
         "ROSService": { "@id": "ros:Service" },
+        "TransformListener": { "@id": "ros:TransformListener" },
 
         "channel-name": { "@id": "ros:channel-name", "@type": "xsd:string" },
         "type-name": { "@id": "ros:type-name", "@type": "xsd:string" },
         "field-path": { "@id": "ros:field-path", "@type": "xsd:string" },
+        "reference-frame": { "@id": "ros:reference-frame", "@type": "xsd:string" },
 
         "HasFrameId": { "@id": "ros:HasFrameId" },
         "frame-id": { "@id": "ros:frame-id", "@type": "xsd:string" },
