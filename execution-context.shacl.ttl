@@ -35,9 +35,8 @@ exec:ResourceWithPathShape
     sh:maxCount 1 ;
   ] .
 
-# The execution context is itself typed RealWorld or Simulation (the platform is not
-# a separate node). A name identifies the platform openly and applies to both — hence
-# optional here; real-world hardware is named per device, on the system realizing it.
+# The execution context is itself typed RealWorld or Simulation; a simulator is the platform it
+# is deployed on, and real-world hardware is named per device, on the system realizing it.
 exec:ExecutionContextShape
   a sh:NodeShape ;
   sh:targetClass exec:ExecutionContext ;
@@ -55,11 +54,6 @@ exec:ExecutionContextShape
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] ;
-  sh:property [
-    sh:path schema:name ;
-    sh:datatype xsd:string ;
-    sh:maxCount 1 ;
-  ] ;
   # A file the run reads rather than carries -- device addresses and credentials change
   # nothing the controller computes and must not travel in an archived run graph.
   sh:property [
@@ -73,7 +67,13 @@ exec:SimulationShape
   a sh:NodeShape ;
   sh:targetClass exec:Simulation ;
   sh:property [
-    sh:path schema:name ;
+    sh:path ssn:deployedOnPlatform ;
+    sh:class sosa:Platform ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path ( ssn:deployedOnPlatform schema:name ) ;
     sh:datatype xsd:string ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
