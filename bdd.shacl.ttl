@@ -1,5 +1,7 @@
 # SPDX-License-Identifier:  MPL-2.0
 # Author: Minh Nguyen (minh@mail.minhnh.com)
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix bdd: <https://secorolab.github.io/metamodels/acceptance-criteria/bdd#> .
@@ -63,6 +65,22 @@ bdd:InSetShape
   sh:class bdd:Set ;
   sh:minCount 1 ;
   sh:maxCount 1 .
+
+#######################################
+# Resolved variable assignments
+#######################################
+# Executions use these entities through prov:used. rdf:value can be a resource,
+# literal or list head (including rdf:nil); list order and duplicates are retained.
+bdd:VariableAssignmentShape
+  a sh:NodeShape ;
+  sh:targetClass bdd:VariableAssignment ;
+  sh:class prov:Entity ;
+  sh:property bdd:RefVariableShape ;
+  sh:property [
+    sh:path rdf:value ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] .
 
 #######################################
 # Basic shape for Scenario

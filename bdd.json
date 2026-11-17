@@ -19,6 +19,8 @@
         "WhenEvent": { "@id": "bdd:WhenEvent" },
         "WhenBehaviour": { "@id": "bdd:WhenBehaviour" },
 
+        "VariableAssignment": { "@id": "bdd:VariableAssignment" },
+
         "ScenarioVariable": { "@id": "bdd:ScenarioVariable" },
         "variable": { "@id": "bdd:ref-variable", "@type": "@id" },
         "variable-list": { "@id": "bdd:variable-list", "@container": "@list", "@type": "@id" },
